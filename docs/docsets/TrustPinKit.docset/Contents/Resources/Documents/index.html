@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrustPinKit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="TrustPinKit  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          TrustPinKit 1.0.0 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/trustpin-cloud/TrustPin-Swift">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Ftrustpin-cloud.github.io%2FTrustPinKit%2Fdocsets%2FTrustPinKit.xml">
+            <img class="header-icon" src="img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">TrustPinKit</a>
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/TrustPin.html">TrustPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinErrors.html">TrustPinErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinLogLevel.html">TrustPinLogLevel</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='trustpin-ios-sdk' class='heading'>TrustPin iOS SDK</h1>
+
+<p>TrustPin is a lightweight and secure iOS library designed to enforce <strong>Certificate Pinning</strong> for native apps, following OWASP recommendations. It enables developers to prevent MITM attacks by ensuring server authenticity at the TLS level.</p>
+
+<hr>
+<h2 id='features' class='heading'>Features</h2>
+
+<ul>
+<li>✅ Certificate and Public Key Pinning (via SHA256, SHA512)</li>
+<li>✅ Asynchronous verification using Swift Concurrency</li>
+<li>✅ <code>URLSessionDelegate</code> for drop-in HTTPS validation</li>
+<li>✅ Compatible with popular networking clients (Alamofire, Moya, and more!)</li>
+</ul>
+
+<hr>
+<h2 id='platform-requirements' class='heading'>Platform Requirements</h2>
+
+<p>TrustPinKit supports the following minimum platform versions:</p>
+
+<ul>
+<li>iOS 13+</li>
+<li>macOS 13+</li>
+<li>Mac Catalyst 13+</li>
+<li>watchOS 7+</li>
+<li>tvOS 13+</li>
+</ul>
+
+<hr>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='swift-package-manager-recommended' class='heading'>Swift Package Manager (Recommended)</h3>
+
+<p>Add the following dependency to your <code>Package.swift</code>:</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/trustpin-cloud/TrustPin-Swift"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">)</span>
+<span class="p">]</span>
+</code></pre>
+
+<p>Then include <code>TrustPinKit</code> as a dependency in your target:</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">target</span><span class="p">(</span>
+    <span class="nv">name</span><span class="p">:</span> <span class="s">"YourApp"</span><span class="p">,</span>
+    <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+        <span class="o">.</span><span class="nf">product</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"TrustPinKit"</span><span class="p">,</span> <span class="nv">package</span><span class="p">:</span> <span class="s">"TrustPin-Swift"</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+
+<hr>
+<h2 id='setup' class='heading'>Setup</h2>
+
+<p>Before verifying certificates, you must initialize the SDK with your organization ID, project ID, and a trusted public key:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"my-org-id"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"my-project-id"</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"base64-encoded-public-key"</span>
+<span class="p">)</span>
+</code></pre>
+
+<p>You will find this information in your project&rsquo;s settings at <a href="https://trustpin.cloud">https://trustpin.cloud</a></p>
+
+<hr>
+<h2 id='usage-with-urlsessiondelegate' class='heading'>Usage with URLSessionDelegate</h2>
+
+<p>To automatically validate HTTPS responses via certificate pinning, use the provided <code><a href="Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a></code>:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">delegate</span> <span class="o">=</span> <span class="kt">TrustPinURLSessionDelegate</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="n">delegate</span><span class="p">,</span> <span class="nv">delegateQueue</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="p">(</span><span class="nv">data</span><span class="p">,</span> <span class="nv">response</span><span class="p">)</span> <span class="o">=</span> <span class="k">try</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://api.example.com"</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+</code></pre>
+
+<hr>
+<h2 id='advanced-usage-manual-certificate-verification' class='heading'>Advanced Usage – Manual Certificate Verification</h2>
+
+<p>You can manually verify a certificate string in PEM format for a specific domain:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">domain</span> <span class="o">=</span> <span class="s">"api.example.com"</span>
+<span class="k">let</span> <span class="nv">pemEncodedCertificate</span> <span class="o">=</span> <span class="s">"""
+-----BEGIN CERTIFICATE-----
+MIIB...
+-----END CERTIFICATE-----
+"""</span>
+
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="n">domain</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">pemEncodedCertificate</span><span class="p">)</span>
+</code></pre>
+
+<p>This can be useful in custom networking stacks, or when inspecting certificate chains manually.</p>
+<h2 id='non-registered-domains-in-trustpin' class='heading'>Non-registered domains in TrustPin</h2>
+
+<p>The default configuration for non-registered domains is to grant access to them and perform the network request.  </p>
+
+<hr>
+<h2 id='documentation' class='heading'>Documentation</h2>
+
+<p>Source code documentation is available at <a href="https://trustpin-cloud.github.io/TrustPin-Swift/">https://trustpin-cloud.github.io/TrustPin-Swift/</a>.</p>
+
+<hr>
+<h2 id='license' class='heading'>License</h2>
+
+<p>All rights reserved to TrustPin &copy; 2025.</p>
+
+<hr>
+<h2 id='feedback' class='heading'>Feedback</h2>
+
+<p>We welcome your feedback! Reach out to us at <a href="https://trustpin.cloud/contact">https://trustpin.cloud/contact</a></p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2025 <a class="link" href="https://trustpin.cloud" target="_blank" rel="external noopener">TrustPin</a>. All rights reserved. (Last updated: 2025-06-20)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

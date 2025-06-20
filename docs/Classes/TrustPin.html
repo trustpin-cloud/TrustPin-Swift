@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrustPin Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/TrustPin" class="dashAnchor"></a>
+
+    <a title="TrustPin Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          TrustPinKit 1.0.0 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/trustpin-cloud/TrustPin-Swift">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Ftrustpin-cloud.github.io%2FTrustPinKit%2Fdocsets%2FTrustPinKit.xml">
+            <img class="header-icon" src="../img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">TrustPinKit</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      <a class="breadcrumb" href="../Classes.html">Classes</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      TrustPin Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrustPin.html">TrustPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinErrors.html">TrustPinErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinLogLevel.html">TrustPinLogLevel</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>TrustPin</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">TrustPin</span></code></pre>
+
+                </div>
+              </div>
+            <p>A namespace for TrustPin core functionality.</p>
+
+<p>This enum provides APIs to initialize the TrustPin core library and perform
+certificate verification against domains using public key pinning.</p>
+
+<p>Use <code><a href="../Classes/TrustPin.html#/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKeyySS_S2StYaKFZ">TrustPin.setup(organizationId:projectId:publicKey:)</a></code> to initialize the library, and
+<code><a href="../Classes/TrustPin.html#/s:11TrustPinKit0aB0C6verify6domain11certificateySS_SStYaKFZ">TrustPin.verify(domain:certificate:)</a></code> to perform asynchronous domain and certificate validation.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    The verification process is asynchronous and utilizes Swift concurrency.
+
+</div>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKeyySS_S2StYaKFZ"></a>
+                    <a name="//apple_ref/swift/Method/setup(organizationId:projectId:publicKey:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKeyySS_S2StYaKFZ">setup(organizationId:<wbr>projectId:<wbr>publicKey:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes the TrustPin core library with the given project ID and public key.</p>
+
+<p>This function sets up the core functionality necessary for certificate pinning.
+It returns an error if the setup fails for reasons such as an invalid project identifier
+or incorrect public key format.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    A <code>TrustPinError</code> if setup fails.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">organizationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">projectId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>projectId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A string that identifies the project within the organization.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>projectId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A string that identifies the project within the organization.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publicKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A base64-encoded string representing the public key.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB0C6verify6domain11certificateySS_SStYaKFZ"></a>
+                    <a name="//apple_ref/swift/Method/verify(domain:certificate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB0C6verify6domain11certificateySS_SStYaKFZ">verify(domain:<wbr>certificate:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Verifies a certificate against the specified domain using public key pinning.</p>
+
+<p>This function performs an asynchronous verification of a certificate,
+ensuring it matches the expected public key for the domain.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    An error if verification fails or if the result cannot be determined.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>domain</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The domain name associated with the certificate.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>certificate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The PEM-encoded certificate string to verify.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB0C3set8logLevelyAA0ab3LogF0O_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/set(logLevel:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB0C3set8logLevelyAA0ab3LogF0O_tFZ">set(logLevel:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the current log level for the logger.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="kt"><a href="../Enums/TrustPinLogLevel.html">TrustPinLogLevel</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>level</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Enums/TrustPinLogLevel.html">TrustPinLogLevel</a></code> to use for filtering messages.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2025 <a class="link" href="https://trustpin.cloud" target="_blank" rel="external noopener">TrustPin</a>. All rights reserved. (Last updated: 2025-06-20)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

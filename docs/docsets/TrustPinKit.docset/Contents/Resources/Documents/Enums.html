@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Enumerations  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Section/Enumerations" class="dashAnchor"></a>
+
+    <a title="Enumerations  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          TrustPinKit 0.0.1 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/trustpin-cloud/TrustPin-Swift">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Ftrustpin-cloud.github.io%2FTrustPin-Swift%2Fdocsets%2FTrustPinKit.xml">
+            <img class="header-icon" src="img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">TrustPinKit</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      Enumerations  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/TrustPin.html">TrustPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinErrors.html">TrustPinErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinLogLevel.html">TrustPinLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinMode.html">TrustPinMode</a>
+              </li>
+            </ul>
+          </li>
+        <li><a href="coverage/index.html" style="color: #007bff; font-weight: bold;">📊 Coverage</a></li></ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Enumerations</h1>
+            <p>The following enumerations are available globally.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO"></a>
+                    <a name="//apple_ref/swift/Enum/TrustPinErrors" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO">TrustPinErrors</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents possible errors thrown by the TrustPin library.</p>
+
+<p>TrustPin provides detailed error information to help with debugging certificate pinning
+issues and implementing appropriate error handling strategies. Each error case represents
+a specific failure scenario with distinct security implications.</p>
+<h2 id='error-categories' class='heading'>Error Categories</h2>
+
+<ul>
+<li><strong>Configuration errors</strong>: Issues with setup parameters or credentials</li>
+<li><strong>Network errors</strong>: Problems fetching pinning configurations</li>
+<li><strong>Certificate errors</strong>: Invalid or malformed certificates</li>
+<li><strong>Validation errors</strong>: Certificate doesn&rsquo;t match configured pins</li>
+<li><strong>Security errors</strong>: Potential security threats or policy violations</li>
+</ul>
+<h2 id='example-error-handling' class='heading'>Example Error Handling</h2>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="s">"api.example.com"</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">cert</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">domainNotRegistered</span> <span class="p">{</span>
+    <span class="c1">// Handle unregistered domain (strict mode only)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Unregistered domain accessed"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">pinsMismatch</span> <span class="p">{</span>
+    <span class="c1">// Critical security issue - possible MITM attack</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Certificate pinning failed"</span><span class="p">)</span>
+    <span class="k">throw</span> <span class="kt">SecurityError</span><span class="o">.</span><span class="n">potentialMITMAttack</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">invalidServerCert</span> <span class="p">{</span>
+    <span class="c1">// Certificate format issue</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Invalid certificate format"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">errorFetchingPinningInfo</span> <span class="p">{</span>
+    <span class="c1">// Network connectivity issue</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Unable to fetch pinning configuration"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='security-response-guidelines' class='heading'>Security Response Guidelines</h2>
+
+<ul>
+<li><strong><code>pinsMismatch</code></strong>: Treat as potential MITM attack, do not retry</li>
+<li><strong><code>domainNotRegistered</code></strong>: Log for security monitoring, handle per mode</li>
+<li><strong><code>allPinsExpired</code></strong>: Update pins urgently, consider emergency bypass</li>
+<li><strong><code>invalidServerCert</code></strong>: Investigate certificate source and format</li>
+<li><strong><code>errorFetchingPinningInfo</code></strong>: Retry with exponential backoff</li>
+<li><strong><code>configurationValidationFailed</code></strong>: Check credentials and network integrity</li>
+<li><strong><code>invalidProjectConfig</code></strong>: Verify credentials and configuration</li>
+</ul>
+<h2 id='topics' class='heading'>Topics</h2>
+<h3 id='configuration-errors' class='heading'>Configuration Errors</h3>
+
+<ul>
+<li><code>invalidProjectConfig</code></li>
+</ul>
+<h3 id='network-errors' class='heading'>Network Errors</h3>
+
+<ul>
+<li><code>errorFetchingPinningInfo</code></li>
+<li><code>configurationValidationFailed</code></li>
+</ul>
+<h3 id='certificate-errors' class='heading'>Certificate Errors</h3>
+
+<ul>
+<li><code>invalidServerCert</code></li>
+</ul>
+<h3 id='validation-errors' class='heading'>Validation Errors</h3>
+
+<ul>
+<li><code>pinsMismatch</code></li>
+<li><code>allPinsExpired</code></li>
+</ul>
+<h3 id='security-errors' class='heading'>Security Errors</h3>
+
+<ul>
+<li><code>domainNotRegistered</code></li>
+</ul>
+
+                        <a href="Enums/TrustPinErrors.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TrustPinErrors</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB8LogLevelO"></a>
+                    <a name="//apple_ref/swift/Enum/TrustPinLogLevel" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB8LogLevelO">TrustPinLogLevel</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Represents the severity level of a log message.</p>
+
+<p>Used by the TrustPin logging infrastructure to control what types of messages are recorded or displayed.</p>
+
+                        <a href="Enums/TrustPinLogLevel.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TrustPinLogLevel</span> <span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="kt">Sendable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB4ModeO"></a>
+                    <a name="//apple_ref/swift/Enum/TrustPinMode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB4ModeO">TrustPinMode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Defines the behavior for handling unregistered domains in TrustPin certificate pinning.</p>
+
+<p>This enum controls how TrustPin behaves when attempting to verify certificates for domains
+that are not configured in your pinning configuration. The choice between modes affects
+both security posture and application flexibility.</p>
+<h2 id='security-considerations' class='heading'>Security Considerations</h2>
+
+<p>Choose your pinning mode based on your security requirements and application architecture:</p>
+
+<ul>
+<li><strong>Production applications</strong>: Use <code>strict</code> mode to ensure all connections are validated</li>
+<li><strong>Development/Testing</strong>: Use <code>permissive</code> mode to allow connections to test servers</li>
+<li><strong>Hybrid applications</strong>: Use <code>permissive</code> mode when connecting to dynamic third-party services</li>
+</ul>
+<h2 id='usage-examples' class='heading'>Usage Examples</h2>
+<h3 id='strict-mode-production' class='heading'>Strict Mode (Production)</h3>
+<pre class="highlight swift"><code><span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"prod-org-123"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"mobile-app-v2"</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"LS0tLS1CRUdJTi..."</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span>  <span class="c1">// Recommended for production</span>
+<span class="p">)</span>
+</code></pre>
+<h3 id='permissive-mode-development' class='heading'>Permissive Mode (Development)</h3>
+<pre class="highlight swift"><code><span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"dev-org-456"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"mobile-app-staging"</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"LS0tLS1CRUdJTk..."</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span>  <span class="c1">// Allows unregistered domains</span>
+<span class="p">)</span>
+</code></pre>
+<h2 id='migration-strategy' class='heading'>Migration Strategy</h2>
+
+<p>When implementing certificate pinning in existing applications:</p>
+
+<ol>
+<li><strong>Phase 1</strong>: Deploy with <code>permissive</code> mode to identify all domains</li>
+<li><strong>Phase 2</strong>: Register critical domains in TrustPin dashboard</li>
+<li><strong>Phase 3</strong>: Switch to <code>strict</code> mode for production security</li>
+</ol>
+<h2 id='topics' class='heading'>Topics</h2>
+<h3 id='pinning-modes' class='heading'>Pinning Modes</h3>
+
+<ul>
+<li><code>strict</code></li>
+<li><code>permissive</code></li>
+</ul>
+
+                        <a href="Enums/TrustPinMode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TrustPinMode</span> <span class="p">:</span> <span class="kt">Sendable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2025 <a class="link" href="https://trustpin.cloud" target="_blank" rel="external noopener">TrustPin</a>. All rights reserved. (Last updated: 2025-07-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

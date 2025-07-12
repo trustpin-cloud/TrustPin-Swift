@@ -1,0 +1,68 @@
+TrustPin Cloud iOS SDK - AGPL v3 License
+
+TrustPin Cloud iOS SDK - Certificate Pinning Management Platform
+
+Copyright (C) 2025 TrustPin (https://trustpin.cloud)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+The source code is available at: https://github.com/trustpin-cloud/
+
+Commercial licensing is available for proprietary or closed-source use.
+For commercial use without AGPL restrictions (including proprietary modifications, closed-source derivatives, or SaaS offerings without source disclosure), a commercial license is required. Commercial licensing includes proprietary use rights, enterprise support, custom license terms, and indemnification. Dual licensing is available. Contact licensing@trustpin.cloud or visit https://trustpin.cloud for details.
+
+Attribution Requirement: If you modify and distribute this software, you must retain this notice and display a "Powered by TrustPin.cloud" message prominently in the user interface, documentation, or about section. The attribution must be clearly visible and in a font size no smaller than other legal notices.
+
+Network Use Clarification: Under AGPL v3, any use of this software over a network (e.g., SaaS or hosted services) requires that you make the complete source code of your modified version available to all users who interact with it.
+
+Contact:
+- Website: https://trustpin.cloud
+- GitHub: https://github.com/trustpin-cloud/
+- Licensing: licensing@trustpin.cloud
+- Business Development: sales@trustpin.cloud
+
+TrustPin is a trademark of TrustPin Cloud. For contribution guidelines, see CONTRIBUTING.md. For security vulnerability reports and responsible disclosure, email security@trustpin.cloud or visit https://trustpin.cloud/security.
+
+---
+
+GNU AFFERO GENERAL PUBLIC LICENSE
+Version 3, 19 November 2007
+
+Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+
+Preamble
+
+The GNU Affero General Public License is a free, copyleft license for
+software and other kinds of works, specifically designed to ensure
+cooperation with the community in the case of network server software.
+
+The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works. By contrast,
+our General Public Licenses are intended to guarantee your freedom to
+share and change all versions of a program--to make sure it remains free
+software for all its users.
+
+When we speak of free software, we are referring to freedom, not
+price. Our General Public Licenses are designed to make sure that you
+have the freedom to distribute copies of free software (and charge for
+them if you wish), that you receive source code or can get it if you
+want it, that you can change the software or use pieces of it in new
+free programs, and that you know you can do these things.
+
+[... The full license text continues ...]
+
+For the full license text, see https://www.gnu.org/licenses/agpl-3.0.txt

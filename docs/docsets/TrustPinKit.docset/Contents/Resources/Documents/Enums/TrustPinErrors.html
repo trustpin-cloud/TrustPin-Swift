@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrustPinErrors Enumeration Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Enum/TrustPinErrors" class="dashAnchor"></a>
+
+    <a title="TrustPinErrors Enumeration Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          TrustPinKit 0.0.1 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/trustpin-cloud/TrustPin-Swift">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Ftrustpin-cloud.github.io%2FTrustPin-Swift%2Fdocsets%2FTrustPinKit.xml">
+            <img class="header-icon" src="../img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">TrustPinKit</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      <a class="breadcrumb" href="../Enums.html">Enumerations</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      TrustPinErrors Enumeration Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrustPin.html">TrustPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinErrors.html">TrustPinErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinLogLevel.html">TrustPinLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinMode.html">TrustPinMode</a>
+              </li>
+            </ul>
+          </li>
+        <li><a href="coverage/index.html" style="color: #007bff; font-weight: bold;">📊 Coverage</a></li></ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>TrustPinErrors</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TrustPinErrors</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                </div>
+              </div>
+            <p>Represents possible errors thrown by the TrustPin library.</p>
+
+<p>TrustPin provides detailed error information to help with debugging certificate pinning
+issues and implementing appropriate error handling strategies. Each error case represents
+a specific failure scenario with distinct security implications.</p>
+<h2 id='error-categories' class='heading'>Error Categories</h2>
+
+<ul>
+<li><strong>Configuration errors</strong>: Issues with setup parameters or credentials</li>
+<li><strong>Network errors</strong>: Problems fetching pinning configurations</li>
+<li><strong>Certificate errors</strong>: Invalid or malformed certificates</li>
+<li><strong>Validation errors</strong>: Certificate doesn&rsquo;t match configured pins</li>
+<li><strong>Security errors</strong>: Potential security threats or policy violations</li>
+</ul>
+<h2 id='example-error-handling' class='heading'>Example Error Handling</h2>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="s">"api.example.com"</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">cert</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">domainNotRegistered</span> <span class="p">{</span>
+    <span class="c1">// Handle unregistered domain (strict mode only)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Unregistered domain accessed"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">pinsMismatch</span> <span class="p">{</span>
+    <span class="c1">// Critical security issue - possible MITM attack</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Certificate pinning failed"</span><span class="p">)</span>
+    <span class="k">throw</span> <span class="kt">SecurityError</span><span class="o">.</span><span class="n">potentialMITMAttack</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">invalidServerCert</span> <span class="p">{</span>
+    <span class="c1">// Certificate format issue</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Invalid certificate format"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">errorFetchingPinningInfo</span> <span class="p">{</span>
+    <span class="c1">// Network connectivity issue</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">error</span><span class="p">(</span><span class="s">"Unable to fetch pinning configuration"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='security-response-guidelines' class='heading'>Security Response Guidelines</h2>
+
+<ul>
+<li><strong><code>pinsMismatch</code></strong>: Treat as potential MITM attack, do not retry</li>
+<li><strong><code>domainNotRegistered</code></strong>: Log for security monitoring, handle per mode</li>
+<li><strong><code>allPinsExpired</code></strong>: Update pins urgently, consider emergency bypass</li>
+<li><strong><code>invalidServerCert</code></strong>: Investigate certificate source and format</li>
+<li><strong><code>errorFetchingPinningInfo</code></strong>: Retry with exponential backoff</li>
+<li><strong><code>configurationValidationFailed</code></strong>: Check credentials and network integrity</li>
+<li><strong><code>invalidProjectConfig</code></strong>: Verify credentials and configuration</li>
+</ul>
+<h2 id='topics' class='heading'>Topics</h2>
+<h3 id='configuration-errors' class='heading'>Configuration Errors</h3>
+
+<ul>
+<li><code>invalidProjectConfig</code></li>
+</ul>
+<h3 id='network-errors' class='heading'>Network Errors</h3>
+
+<ul>
+<li><code>errorFetchingPinningInfo</code></li>
+<li><code>configurationValidationFailed</code></li>
+</ul>
+<h3 id='certificate-errors' class='heading'>Certificate Errors</h3>
+
+<ul>
+<li><code>invalidServerCert</code></li>
+</ul>
+<h3 id='validation-errors' class='heading'>Validation Errors</h3>
+
+<ul>
+<li><code>pinsMismatch</code></li>
+<li><code>allPinsExpired</code></li>
+</ul>
+<h3 id='security-errors' class='heading'>Security Errors</h3>
+
+<ul>
+<li><code>domainNotRegistered</code></li>
+</ul>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO20invalidProjectConfigyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/invalidProjectConfig" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO20invalidProjectConfigyA2CmF">invalidProjectConfig</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The project configuration is invalid or incomplete.</p>
+
+<p>This error occurs when the setup parameters provided to <code><a href="../Classes/TrustPin.html#/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKey4modeySS_S2SAA0aB4ModeOtYaKFZ">setup(organizationId:projectId:publicKey:mode:)</a></code>
+are invalid, missing, or incorrectly formatted.</p>
+<h2 id='common-causes' class='heading'>Common Causes</h2>
+
+<ul>
+<li>Empty or whitespace-only organization ID, project ID, or public key</li>
+<li>Invalid base64 encoding in the public key</li>
+<li>Incorrect credential format or structure</li>
+<li>Network connectivity issues during credential validation</li>
+</ul>
+<h2 id='resolution-steps' class='heading'>Resolution Steps</h2>
+
+<ol>
+<li><strong>Verify credentials</strong>: Check organization ID and project ID in TrustPin dashboard</li>
+<li><strong>Validate public key</strong>: Ensure proper base64 encoding without extra characters</li>
+<li><strong>Check formatting</strong>: Remove any whitespace, newlines, or special characters</li>
+<li><strong>Test connectivity</strong>: Verify network access to TrustPin service</li>
+</ol>
+<h2 id='example' class='heading'>Example</h2>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+        <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"org-123"</span><span class="p">,</span>
+        <span class="nv">projectId</span><span class="p">:</span> <span class="s">"project-456"</span><span class="p">,</span>
+        <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"LS0tLS1CRUdJTi..."</span><span class="p">,</span>
+        <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span>
+    <span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">invalidProjectConfig</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Invalid credentials - check TrustPin dashboard"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    This error indicates a fundamental configuration issue that must be resolved before TrustPin can function.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidProjectConfig</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO24errorFetchingPinningInfoyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/errorFetchingPinningInfo" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO24errorFetchingPinningInfoyA2CmF">errorFetchingPinningInfo</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Failed to fetch or parse pinning information from the remote source.</p>
+
+<p>This error occurs when TrustPin cannot download the pinning configuration from
+the TrustPin CDN or when the downloaded configuration cannot be parsed.</p>
+<h2 id='common-causes' class='heading'>Common Causes</h2>
+
+<ul>
+<li>Network connectivity issues</li>
+<li>DNS resolution failures for <code>cdn.trustpin.cloud</code></li>
+<li>Firewall or proxy blocking HTTPS requests</li>
+<li>Service downtime or maintenance</li>
+<li>Invalid response format from the server</li>
+</ul>
+<h2 id='resolution-steps' class='heading'>Resolution Steps</h2>
+
+<ol>
+<li><strong>Check connectivity</strong>: Verify internet connection and DNS resolution</li>
+<li><strong>Test endpoint</strong>: Try accessing <code>https://cdn.trustpin.cloud</code> directly</li>
+<li><strong>Review firewall</strong>: Ensure HTTPS traffic to TrustPin CDN is allowed</li>
+<li><strong>Retry with backoff</strong>: Implement exponential backoff for transient failures</li>
+<li><strong>Check service status</strong>: Verify TrustPin service availability</li>
+</ol>
+<h2 id='retry-strategy' class='heading'>Retry Strategy</h2>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setupWithRetry</span><span class="p">()</span> <span class="k">async</span> <span class="k">throws</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="n">attempt</span> <span class="k">in</span> <span class="mi">1</span><span class="o">...</span><span class="mi">3</span> <span class="p">{</span>
+        <span class="k">do</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="cm">/* credentials */</span><span class="p">)</span>
+            <span class="k">return</span> <span class="c1">// Success</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">errorFetchingPinningInfo</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">attempt</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="p">{</span>
+                <span class="k">try</span> <span class="k">await</span> <span class="kt">Task</span><span class="o">.</span><span class="nf">sleep</span><span class="p">(</span><span class="nv">nanoseconds</span><span class="p">:</span> <span class="kt">UInt64</span><span class="p">(</span><span class="n">attempt</span> <span class="o">*</span> <span class="mi">1_000_000_000</span><span class="p">))</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">errorFetchingPinningInfo</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This error may be temporary and retrying with exponential backoff is recommended.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">errorFetchingPinningInfo</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO17invalidServerCertyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/invalidServerCert" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO17invalidServerCertyA2CmF">invalidServerCert</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The server certificate is invalid, corrupted, or could not be parsed.</p>
+
+<p>This error occurs when the certificate provided to <code><a href="../Classes/TrustPin.html#/s:11TrustPinKit0aB0C6verify6domain11certificateySS_SStYaKFZ">verify(domain:certificate:)</a></code>
+is malformed, corrupted, or not in the expected PEM format.</p>
+<h2 id='common-causes' class='heading'>Common Causes</h2>
+
+<ul>
+<li>Invalid PEM format (missing BEGIN/END markers)</li>
+<li>Corrupted certificate data</li>
+<li>Incorrect encoding (not base64)</li>
+<li>Truncated or incomplete certificate</li>
+<li>Wrong certificate type (not X.509)</li>
+</ul>
+<h2 id='certificate-format-requirements' class='heading'>Certificate Format Requirements</h2>
+
+<p>Certificates must be in PEM format with proper markers:</p>
+<pre class="highlight swift"><code><span class="o">-----</span><span class="kt">BEGIN</span> <span class="kt">CERTIFICATE</span><span class="o">-----</span>
+<span class="kt">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA</span><span class="o">...</span>
+<span class="o">-----</span><span class="kt">END</span> <span class="kt">CERTIFICATE</span><span class="o">-----</span>
+</code></pre>
+<h2 id='resolution-steps' class='heading'>Resolution Steps</h2>
+
+<ol>
+<li><strong>Verify format</strong>: Ensure certificate includes BEGIN/END markers</li>
+<li><strong>Check encoding</strong>: Validate base64 encoding within markers</li>
+<li><strong>Test parsing</strong>: Use OpenSSL or similar tool to validate certificate</li>
+<li><strong>Source validation</strong>: Verify certificate source and extraction method</li>
+</ol>
+<h2 id='example' class='heading'>Example</h2>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="s">"api.example.com"</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">pemCert</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">invalidServerCert</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Certificate format is invalid - check PEM encoding"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    This error indicates a problem with the certificate format, not the pinning validation.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">invalidServerCert</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO12pinsMismatchyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/pinsMismatch" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO12pinsMismatchyA2CmF">pinsMismatch</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>No matching pins were found for the provided certificate.</p>
+
+<p>This error occurs when the certificate&rsquo;s public key hash doesn&rsquo;t match any of the
+configured pins for the domain. This is a critical security error that may indicate
+a man-in-the-middle (MITM) attack or certificate rotation without pin updates.</p>
+<h2 id='security-implications' class='heading'>Security Implications</h2>
+
+<ul>
+<li><strong>High severity</strong>: Potential security threat detected</li>
+<li><strong>MITM attack</strong>: Certificate may be compromised or intercepted</li>
+<li><strong>Service disruption</strong>: Legitimate certificate rotation without pin updates</li>
+<li><strong>Configuration drift</strong>: Pins may be outdated or incorrect</li>
+</ul>
+<h2 id='immediate-actions' class='heading'>Immediate Actions</h2>
+
+<ol>
+<li><strong>Do not retry</strong>: This is not a transient error</li>
+<li><strong>Log security event</strong>: Record details for security monitoring</li>
+<li><strong>Alert administrators</strong>: Notify security team of potential threat</li>
+<li><strong>Block connection</strong>: Prevent potentially compromised connection</li>
+</ol>
+<h2 id='investigation-steps' class='heading'>Investigation Steps</h2>
+
+<ol>
+<li><strong>Verify certificate</strong>: Check if server certificate changed legitimately</li>
+<li><strong>Update pins</strong>: If legitimate change, update pins in TrustPin dashboard</li>
+<li><strong>Check network</strong>: Investigate for network-level interference</li>
+<li><strong>Review logs</strong>: Look for patterns indicating broader compromise</li>
+</ol>
+<h2 id='example-handling' class='heading'>Example Handling</h2>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="s">"api.example.com"</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">cert</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">pinsMismatch</span> <span class="p">{</span>
+    <span class="c1">// Critical security issue - do not retry</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Certificate pinning failed for </span><span class="se">\(</span><span class="n">domain</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">securityMonitor</span><span class="o">.</span><span class="nf">alert</span><span class="p">(</span><span class="s">"Potential MITM attack detected"</span><span class="p">)</span>
+    <span class="k">throw</span> <span class="kt">SecurityError</span><span class="o">.</span><span class="n">potentialMITMAttack</span>
+<span class="p">}</span>
+</code></pre>
+<div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    This error should be treated as a potential security threat and investigated immediately.
+
+</div><div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    Never ignore this error or implement automatic retries.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">pinsMismatch</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO14allPinsExpiredyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/allPinsExpired" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO14allPinsExpiredyA2CmF">allPinsExpired</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All configured pins for the domain have expired.</p>
+
+<p>This error occurs when all the certificate pins configured for a domain have
+passed their expiration date. This indicates a maintenance issue that requires
+immediate attention to restore service availability.</p>
+<h2 id='common-causes' class='heading'>Common Causes</h2>
+
+<ul>
+<li>Expired certificates that weren&rsquo;t renewed in time</li>
+<li>Outdated pin configuration in TrustPin dashboard</li>
+<li>Certificate rotation without pin updates</li>
+<li>Maintenance oversight or process failure</li>
+</ul>
+<h2 id='immediate-actions' class='heading'>Immediate Actions</h2>
+
+<ol>
+<li><strong>Check certificate validity</strong>: Verify if server certificate is still valid</li>
+<li><strong>Update pins</strong>: Generate new pins for current certificates</li>
+<li><strong>Emergency bypass</strong>: Consider temporary permissive mode if critical</li>
+<li><strong>Notify administrators</strong>: Alert operations team of expiration</li>
+</ol>
+<h2 id='resolution-steps' class='heading'>Resolution Steps</h2>
+
+<ol>
+<li><strong>TrustPin dashboard</strong>: Update expired pins with current certificate hashes</li>
+<li><strong>Certificate renewal</strong>: Renew certificates if they&rsquo;re also expired</li>
+<li><strong>Process review</strong>: Improve pin management and renewal processes</li>
+<li><strong>Monitoring</strong>: Set up alerts for upcoming pin expirations</li>
+</ol>
+<h2 id='emergency-bypass' class='heading'>Emergency Bypass</h2>
+
+<p>If immediate service restoration is critical:</p>
+<pre class="highlight swift"><code><span class="c1">// Temporary permissive mode for emergency access</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="n">orgId</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="n">projectId</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="n">publicKey</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span>  <span class="c1">// Temporary bypass</span>
+<span class="p">)</span>
+</code></pre>
+<h2 id='prevention' class='heading'>Prevention</h2>
+
+<ul>
+<li><strong>Monitoring</strong>: Set up alerts 30 days before pin expiration</li>
+<li><strong>Automation</strong>: Implement automated pin renewal processes</li>
+<li><strong>Staging testing</strong>: Test pin updates in staging environment first</li>
+<li><p><strong>Documentation</strong>: Maintain clear pin management procedures</p></li>
+</ul><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    <p>This error requires immediate attention to restore secure connectivity.</p>
+
+</div><div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Consider service impact before implementing emergency bypass procedures.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">allPinsExpired</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO29configurationValidationFailedyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/configurationValidationFailed" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO29configurationValidationFailedyA2CmF">configurationValidationFailed</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The payload failed validation (e.g., signature mismatch or invalid structure).</p>
+
+<p>This error occurs when the validation fails for the
+downloaded pinning configuration. This indicates either a security issue or
+a configuration problem with the credentials.</p>
+<h2 id='common-causes' class='heading'>Common Causes</h2>
+
+<ul>
+<li><strong>Credential mismatch</strong>: Public key doesn&rsquo;t match the signature</li>
+<li><strong>Corrupted payload</strong>: Network issues corrupted the downloaded configuration</li>
+<li><strong>Tampering</strong>: Potential man-in-the-middle attack on configuration</li>
+<li><strong>Service issues</strong>: Problems with TrustPin service signing</li>
+<li><strong>Clock skew</strong>: Timestamp validation failures due to incorrect system time</li>
+</ul>
+<h2 id='security-implications' class='heading'>Security Implications</h2>
+
+<ul>
+<li><strong>High severity</strong>: Configuration integrity compromised</li>
+<li><strong>Potential attack</strong>: Configuration may have been tampered with</li>
+<li><strong>Service disruption</strong>: Cannot proceed with pinning validation</li>
+<li><strong>Trust breakdown</strong>: Fundamental security validation failed</li>
+</ul>
+<h2 id='resolution-steps' class='heading'>Resolution Steps</h2>
+
+<ol>
+<li><strong>Verify credentials</strong>: Ensure public key matches TrustPin dashboard</li>
+<li><strong>Check system time</strong>: Verify device clock is accurate</li>
+<li><strong>Test connectivity</strong>: Ensure clean network path to TrustPin service</li>
+<li><strong>Retry operation</strong>: Attempt fresh configuration download</li>
+<li><strong>Contact support</strong>: If persistent, contact TrustPin support</li>
+</ol>
+<h2 id='diagnostic-information' class='heading'>Diagnostic Information</h2>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="cm">/* credentials */</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">configurationValidationFailed</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"configuration validation failed - check credentials and network"</span><span class="p">)</span>
+    <span class="c1">// Log additional context:</span>
+    <span class="c1">// - System time</span>
+    <span class="c1">// - Network conditions</span>
+    <span class="c1">// - Credential sources</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='prevention' class='heading'>Prevention</h2>
+
+<ul>
+<li><strong>Credential management</strong>: Securely store and manage public keys</li>
+<li><strong>Time synchronization</strong>: Ensure accurate system time via NTP</li>
+<li><strong>Network monitoring</strong>: Monitor for network interference</li>
+<li><p><strong>Validation testing</strong>: Regularly test credential validation</p></li>
+</ul><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    <p>This error may indicate a security issue and should be investigated thoroughly.</p>
+
+</div><div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Do not ignore this error as it may indicate configuration tampering.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">configurationValidationFailed</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB6ErrorsO19domainNotRegisteredyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/domainNotRegistered" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB6ErrorsO19domainNotRegisteredyA2CmF">domainNotRegistered</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The domain is not registered for pinning and enforcement is enabled.</p>
+
+<p>This error occurs only in <code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO6strictyA2CmF">strict</a></code> mode when attempting to verify
+a certificate for a domain that is not configured in your TrustPin pinning
+configuration. This enforces the security policy that all connections must be
+explicitly validated.</p>
+<h2 id='when-this-occurs' class='heading'>When This Occurs</h2>
+
+<ul>
+<li><strong>Strict mode only</strong>: This error is not thrown in <code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO10permissiveyA2CmF">permissive</a></code> mode</li>
+<li><strong>Unregistered domains</strong>: Domain not found in TrustPin dashboard configuration</li>
+<li><strong>Typos in domain</strong>: Incorrect domain name or subdomain</li>
+<li><strong>New services</strong>: Recently added services not yet registered</li>
+</ul>
+<h2 id='resolution-steps' class='heading'>Resolution Steps</h2>
+
+<ol>
+<li><strong>Register domain</strong>: Add domain to TrustPin dashboard with appropriate pins</li>
+<li><strong>Verify domain name</strong>: Check for typos or incorrect subdomain</li>
+<li><strong>Update configuration</strong>: Refresh TrustPin configuration if recently added</li>
+<li><strong>Consider mode</strong>: Evaluate if <code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO10permissiveyA2CmF">permissive</a></code> is appropriate</li>
+</ol>
+<h2 id='domain-registration' class='heading'>Domain Registration</h2>
+
+<p>To register a domain in TrustPin:</p>
+
+<ol>
+<li><strong>TrustPin Dashboard</strong>: Log into your TrustPin account</li>
+<li><strong>Add Domain</strong>: Configure domain with certificate pins</li>
+<li><strong>Generate Pins</strong>: Create SHA-256 or SHA-512 hashes of certificates</li>
+<li><strong>Set Expiration</strong>: Configure appropriate expiration dates</li>
+<li><strong>Test Configuration</strong>: Verify in staging environment</li>
+</ol>
+<h2 id='example-handling' class='heading'>Example Handling</h2>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="s">"new-api.example.com"</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">cert</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">domainNotRegistered</span> <span class="p">{</span>
+    <span class="c1">// Domain not configured for pinning</span>
+    <span class="n">logger</span><span class="o">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Unregistered domain accessed: </span><span class="se">\(</span><span class="n">domain</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="c1">// Options:</span>
+    <span class="c1">// 1. Register domain in TrustPin dashboard</span>
+    <span class="c1">// 2. Switch to permissive mode temporarily</span>
+    <span class="c1">// 3. Update application to handle unregistered domains</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='security-considerations' class='heading'>Security Considerations</h2>
+
+<ul>
+<li><strong>Intentional restriction</strong>: This error enforces your security policy</li>
+<li><strong>Audit trail</strong>: Log these events for security monitoring</li>
+<li><strong>Process improvement</strong>: May indicate need for better domain management</li>
+<li><strong>Compliance</strong>: Helps maintain strict security compliance</li>
+</ul>
+<h2 id='migration-strategy' class='heading'>Migration Strategy</h2>
+
+<p>When implementing strict mode:</p>
+<pre class="highlight swift"><code><span class="c1">// Phase 1: Discovery with permissive mode</span>
+<span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="o">.</span><span class="n">info</span><span class="p">)</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span><span class="p">)</span>
+
+<span class="c1">// Phase 2: Register discovered domains</span>
+<span class="c1">// (Use logs to identify all accessed domains)</span>
+
+<span class="c1">// Phase 3: Enable strict mode</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span><span class="p">)</span>
+</code></pre>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    This error only occurs in strict mode and is part of the security enforcement.
+
+</div><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    Use this error as feedback to improve your domain registration process.
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">domainNotRegistered</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2025 <a class="link" href="https://trustpin.cloud" target="_blank" rel="external noopener">TrustPin</a>. All rights reserved. (Last updated: 2025-07-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

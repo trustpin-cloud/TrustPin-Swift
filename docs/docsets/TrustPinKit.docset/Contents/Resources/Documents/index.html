@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrustPinKit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="TrustPinKit  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          TrustPinKit 0.0.1 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/trustpin-cloud/TrustPin-Swift">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Ftrustpin-cloud.github.io%2FTrustPin-Swift%2Fdocsets%2FTrustPinKit.xml">
+            <img class="header-icon" src="img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">TrustPinKit</a>
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/TrustPin.html">TrustPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinErrors.html">TrustPinErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinLogLevel.html">TrustPinLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Enums/TrustPinMode.html">TrustPinMode</a>
+              </li>
+            </ul>
+          </li>
+        <li><a href="coverage/index.html" style="color: #007bff; font-weight: bold;">📊 Coverage</a></li></ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            
+            <h1 id='trustpin-ios-sdk' class='heading'>TrustPin iOS SDK</h1>
+
+<p><a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.5%2B-orange.svg" alt="Swift"></a>
+<a href="https://developer.apple.com/ios/"><img src="https://img.shields.io/badge/iOS-13.0%2B-blue.svg" alt="iOS"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-TrustPin-green.svg" alt="License"></a></p>
+
+<p><a href="https://trustpin.cloud/">TrustPin</a> is a modern, lightweight, and secure iOS/macOS library designed to enforce <strong>SSL Certificate Pinning</strong> for native applications. Built with Swift Concurrency and following OWASP security recommendations, TrustPin prevents man-in-the-middle (MITM) attacks by ensuring server authenticity at the TLS level.</p>
+<h2 id='key-features' class='heading'>🚀 Key Features</h2>
+
+<ul>
+<li>✅ <strong>Modern Swift Concurrency</strong> - Built with <code>async</code>/<code>await</code> for seamless integration</li>
+<li>✅ <strong>Flexible Pinning Modes</strong> - Strict validation or permissive mode for development</li>
+<li>✅ <strong>Multiple Hash Algorithms</strong> - SHA-256 and SHA-512 certificate validation</li>
+<li>✅ <strong>Signed Configuration</strong> - Cryptographically signed pinning configurations</li>
+<li>✅ <strong>URLSession Integration</strong> - Drop-in <code>URLSessionDelegate</code> for automatic validation</li>
+<li>✅ <strong>Intelligent Caching</strong> - 10-minute configuration cache with stale fallback</li>
+<li>✅ <strong>Comprehensive Logging</strong> - Configurable log levels for debugging and monitoring</li>
+<li>✅ <strong>Cross-Platform</strong> - iOS, macOS, watchOS, tvOS, and Mac Catalyst support</li>
+</ul>
+
+<hr>
+<h2 id='platform-requirements' class='heading'>📋 Platform Requirements</h2>
+
+<table><thead>
+<tr>
+<th>Platform</th>
+<th>Minimum Version</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>iOS</td>
+<td>13.0+</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>13.0+</td>
+</tr>
+<tr>
+<td>watchOS</td>
+<td>7.0+</td>
+</tr>
+<tr>
+<td>tvOS</td>
+<td>13.0+</td>
+</tr>
+<tr>
+<td>Mac Catalyst</td>
+<td>13.0+</td>
+</tr>
+</tbody></table>
+
+<p><strong>Required:</strong> Swift 5.5+ for async/await support</p>
+
+<hr>
+<h2 id='installation' class='heading'>📦 Installation</h2>
+<h3 id='swift-package-manager-recommended' class='heading'>Swift Package Manager (Recommended)</h3>
+
+<p>Add TrustPin to your project using Xcode:</p>
+
+<ol>
+<li><strong>File → Add Package Dependencies</strong></li>
+<li><strong>Enter repository URL:</strong>
+<code>
+https://github.com/trustpin-cloud/TrustPin-Swift
+</code></li>
+<li><strong>Select version:</strong> <code>VERSION_PLACEHOLDER</code> or later</li>
+</ol>
+<h4 id='manual-package-swift' class='heading'>Manual Package.swift</h4>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/trustpin-cloud/TrustPin-Swift"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"VERSION_PLACEHOLDER"</span><span class="p">)</span>
+<span class="p">],</span>
+<span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">target</span><span class="p">(</span>
+        <span class="nv">name</span><span class="p">:</span> <span class="s">"YourApp"</span><span class="p">,</span>
+        <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+            <span class="o">.</span><span class="nf">product</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"TrustPinKit"</span><span class="p">,</span> <span class="nv">package</span><span class="p">:</span> <span class="s">"TrustPin-Swift"</span><span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">]</span>
+</code></pre>
+
+<hr>
+<h2 id='quick-setup' class='heading'>🔧 Quick Setup</h2>
+<h3 id='1-import-and-configure' class='heading'>1. Import and Configure</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="c1">// Configure TrustPin with your project credentials</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"your-org-id"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"your-project-id"</span><span class="p">,</span> 
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"your-base64-public-key"</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span>  <span class="c1">// Recommended for production</span>
+<span class="p">)</span>
+</code></pre>
+
+<blockquote>
+<p>💡 <strong>Find your credentials</strong> in the <a href="https://app.trustpin.cloud">TrustPin Dashboard</a></p>
+
+<p>⚠️ <strong>Important</strong>: <code>TrustPin.setup()</code> must be called only once during your app&rsquo;s lifecycle. Concurrent setup calls are not supported and will throw <code><a href="Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO20invalidProjectConfigyA2CmF">TrustPinErrors.invalidProjectConfig</a></code>. If already initialized, subsequent calls will return immediately.</p>
+</blockquote>
+<h3 id='2-choose-your-pinning-mode' class='heading'>2. Choose Your Pinning Mode</h3>
+
+<p>TrustPin offers two validation modes:</p>
+<h4 id='strict-mode-recommended-for-production' class='heading'>Strict Mode (Recommended for Production)</h4>
+<pre class="highlight swift"><code><span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="c1">// ... your credentials</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span>  <span class="c1">// Throws error for unregistered domains</span>
+<span class="p">)</span>
+</code></pre>
+<h4 id='permissive-mode-development-amp-testing' class='heading'>Permissive Mode (Development &amp; Testing)</h4>
+<pre class="highlight swift"><code><span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="c1">// ... your credentials  </span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span>  <span class="c1">// Allows unregistered domains to bypass pinning</span>
+<span class="p">)</span>
+</code></pre>
+
+<hr>
+<h2 id='usage-examples' class='heading'>🛠 Usage Examples</h2>
+<h3 id='automatic-urlsession-integration' class='heading'>Automatic URLSession Integration</h3>
+
+<p>The simplest way to add certificate pinning to your network requests:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="kd">class</span> <span class="kt">NetworkManager</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">trustPinDelegate</span> <span class="o">=</span> <span class="kt">TrustPinURLSessionDelegate</span><span class="p">()</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="p">(</span>
+        <span class="nv">configuration</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
+        <span class="nv">delegate</span><span class="p">:</span> <span class="n">trustPinDelegate</span><span class="p">,</span>
+        <span class="nv">delegateQueue</span><span class="p">:</span> <span class="kc">nil</span>
+    <span class="p">)</span>
+
+    <span class="kd">func</span> <span class="nf">fetchData</span><span class="p">()</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Data</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">url</span> <span class="o">=</span> <span class="kt">URL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"https://api.example.com/data"</span><span class="p">)</span><span class="o">!</span>
+        <span class="k">let</span> <span class="p">(</span><span class="nv">data</span><span class="p">,</span> <span class="nv">_</span><span class="p">)</span> <span class="o">=</span> <span class="k">try</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='manual-certificate-verification' class='heading'>Manual Certificate Verification</h3>
+
+<p>For custom networking stacks or certificate inspection:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="c1">// Verify a PEM-encoded certificate for a specific domain</span>
+<span class="k">let</span> <span class="nv">domain</span> <span class="o">=</span> <span class="s">"api.example.com"</span>
+<span class="k">let</span> <span class="nv">pemCertificate</span> <span class="o">=</span> <span class="s">"""
+-----BEGIN CERTIFICATE-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+-----END CERTIFICATE-----
+"""</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="n">domain</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">pemCertificate</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"✅ Certificate is valid and matches configured pins"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">domainNotRegistered</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"⚠️ Domain not configured for pinning"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">pinsMismatch</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"❌ Certificate doesn't match any configured pins"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"💥 Verification failed: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='setup-and-initialization' class='heading'>Setup and Initialization</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="kd">class</span> <span class="kt">AppDelegate</span><span class="p">:</span> <span class="kt">UIApplicationDelegate</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+
+        <span class="kt">Task</span> <span class="p">{</span>
+            <span class="k">do</span> <span class="p">{</span>
+                <span class="c1">// Setup TrustPin once during app launch</span>
+                <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+                    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"your-org-id"</span><span class="p">,</span>
+                    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"your-project-id"</span><span class="p">,</span>
+                    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"your-public-key"</span><span class="p">,</span>
+                    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span>
+                <span class="p">)</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"✅ TrustPin initialized successfully"</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="s">"❌ TrustPin setup failed: </span><span class="se">\(</span><span class="n">error</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<h3 id='advanced-configuration' class='heading'>Advanced Configuration</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="c1">// Enable debug logging before setup</span>
+<span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="o">.</span><span class="n">debug</span><span class="p">)</span>
+
+<span class="c1">// Setup with permissive mode for staging environment</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"staging-org-id"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"staging-project-id"</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"staging-public-key"</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span>
+<span class="p">)</span>
+</code></pre>
+
+<hr>
+<h2 id='integration-examples' class='heading'>🔧 Integration Examples</h2>
+<h3 id='with-alamofire' class='heading'>With Alamofire</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Alamofire</span>
+<span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="k">let</span> <span class="nv">trustPinDelegate</span> <span class="o">=</span> <span class="kt">TrustPinURLSessionDelegate</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">Session</span><span class="p">(</span>
+    <span class="nv">configuration</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
+    <span class="nv">delegate</span><span class="p">:</span> <span class="kt">SessionDelegate</span><span class="p">(),</span>
+    <span class="nv">serverTrustManager</span><span class="p">:</span> <span class="kt">ServerTrustManager</span><span class="p">(</span>
+        <span class="nv">evaluators</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s">"api.example.com"</span><span class="p">:</span> <span class="kt">PinnedCertificatesTrustEvaluator</span><span class="p">()</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1">// Use the session for your requests</span>
+<span class="k">let</span> <span class="nv">response</span> <span class="o">=</span> <span class="k">try</span> <span class="k">await</span> <span class="n">session</span><span class="o">.</span><span class="nf">request</span><span class="p">(</span><span class="s">"https://api.example.com/data"</span><span class="p">)</span><span class="o">.</span><span class="nf">serializingData</span><span class="p">()</span><span class="o">.</span><span class="n">value</span>
+</code></pre>
+<h3 id='with-custom-urlsession' class='heading'>With Custom URLSession</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+<span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="kd">class</span> <span class="kt">SecureNetworkClient</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">trustPinDelegate</span> <span class="o">=</span> <span class="kt">TrustPinURLSessionDelegate</span><span class="p">()</span>
+    <span class="kd">private</span> <span class="kd">lazy</span> <span class="k">var</span> <span class="nv">urlSession</span><span class="p">:</span> <span class="kt">URLSession</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">config</span> <span class="o">=</span> <span class="kt">URLSessionConfiguration</span><span class="o">.</span><span class="k">default</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">timeoutIntervalForRequest</span> <span class="o">=</span> <span class="mi">30</span>
+        <span class="k">return</span> <span class="kt">URLSession</span><span class="p">(</span><span class="nv">configuration</span><span class="p">:</span> <span class="n">config</span><span class="p">,</span> <span class="nv">delegate</span><span class="p">:</span> <span class="n">trustPinDelegate</span><span class="p">,</span> <span class="nv">delegateQueue</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="p">}()</span>
+
+    <span class="kd">func</span> <span class="nf">performSecureRequest</span><span class="p">(</span><span class="n">to</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Data</span><span class="p">,</span> <span class="kt">URLResponse</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">try</span> <span class="k">await</span> <span class="n">urlSession</span><span class="o">.</span><span class="nf">data</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<hr>
+<h2 id='pinning-modes-explained' class='heading'>🎯 Pinning Modes Explained</h2>
+
+<table><thead>
+<tr>
+<th>Mode</th>
+<th>Behavior</th>
+<th>Use Case</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong><code>.strict</code></strong></td>
+<td>❌ Throws <code><a href="Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO19domainNotRegisteredyA2CmF">TrustPinErrors.domainNotRegistered</a></code> for unregistered domains</td>
+<td><strong>Production environments</strong> where all connections should be validated</td>
+</tr>
+<tr>
+<td><strong><code>.permissive</code></strong></td>
+<td>✅ Allows unregistered domains to bypass pinning</td>
+<td><strong>Development/Testing</strong> or apps connecting to dynamic domains</td>
+</tr>
+</tbody></table>
+<h3 id='when-to-use-each-mode' class='heading'>When to Use Each Mode</h3>
+<h4 id='strict-mode-code-strict-code' class='heading'>Strict Mode (<code>.strict</code>)</h4>
+
+<ul>
+<li>✅ <strong>Production applications</strong></li>
+<li>✅ <strong>High-security environments</strong><br></li>
+<li>✅ <strong>Known, fixed set of API endpoints</strong></li>
+<li>✅ <strong>Compliance requirements</strong></li>
+</ul>
+<h4 id='permissive-mode-code-permissive-code' class='heading'>Permissive Mode (<code>.permissive</code>)</h4>
+
+<ul>
+<li>✅ <strong>Development and staging</strong></li>
+<li>✅ <strong>Applications with dynamic/unknown endpoints</strong></li>
+<li>✅ <strong>Gradual migration to certificate pinning</strong></li>
+<li>✅ <strong>Third-party SDK integrations</strong></li>
+</ul>
+
+<hr>
+<h2 id='error-handling' class='heading'>📊 Error Handling</h2>
+
+<p>TrustPin provides detailed error types for proper handling:</p>
+<pre class="highlight swift"><code><span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="s">"api.example.com"</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="n">pemCert</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">domainNotRegistered</span> <span class="p">{</span>
+    <span class="c1">// Domain not configured in TrustPin (only in strict mode)</span>
+    <span class="nf">handleUnregisteredDomain</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">pinsMismatch</span> <span class="p">{</span>
+    <span class="c1">// Certificate doesn't match configured pins - possible MITM</span>
+    <span class="nf">handleSecurityThreat</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">allPinsExpired</span> <span class="p">{</span>
+    <span class="c1">// All pins for domain have expired</span>
+    <span class="nf">handleExpiredPins</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">invalidServerCert</span> <span class="p">{</span>
+    <span class="c1">// Certificate format is invalid</span>
+    <span class="nf">handleInvalidCertificate</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">invalidProjectConfig</span> <span class="p">{</span>
+    <span class="c1">// Setup parameters are invalid</span>
+    <span class="nf">handleConfigurationError</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">errorFetchingPinningInfo</span> <span class="p">{</span>
+    <span class="c1">// Network error fetching configuration</span>
+    <span class="nf">handleNetworkError</span><span class="p">()</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">configurationValidationFailed</span> <span class="p">{</span>
+    <span class="c1">// configuration signature validation failed</span>
+    <span class="nf">handleSignatureError</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre>
+
+<hr>
+<h2 id='logging-and-debugging' class='heading'>🔍 Logging and Debugging</h2>
+
+<p>TrustPin provides comprehensive logging for debugging and monitoring:</p>
+<pre class="highlight swift"><code><span class="c1">// Set log level before setup</span>
+<span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="o">.</span><span class="n">debug</span><span class="p">)</span>
+
+<span class="c1">// Available log levels:</span>
+<span class="c1">// .none     - No logging</span>
+<span class="c1">// .error    - Errors only  </span>
+<span class="c1">// .info     - Errors and informational messages</span>
+<span class="c1">// .debug    - All messages including debug information</span>
+</code></pre>
+<h3 id='example-debug-output' class='heading'>Example Debug Output</h3>
+<pre class="highlight plaintext"><code>[14:30:15] [DEBUG] Starting certificate verification for domain: api.example.com
+[14:30:15] [DEBUG] Sanitized domain: api.example.com
+[14:30:15] [INFO] Using cached configuration
+[14:30:15] [DEBUG] Found domain configuration with 2 pins
+[14:30:15] [DEBUG] Certificate hash matches sha256 pin for domain api.example.com
+[14:30:15] [INFO] Valid pin found for api.example.com
+</code></pre>
+
+<hr>
+<h2 id='best-practices' class='heading'>🏗 Best Practices</h2>
+<h3 id='setup-and-initialization' class='heading'>Setup and Initialization</h3>
+
+<ol>
+<li><strong>Call <code>TrustPin.setup()</code> only once</strong> during app launch (typically in <code>AppDelegate</code>)</li>
+<li><strong>Handle setup errors gracefully</strong> - don&rsquo;t block app launch if TrustPin fails</li>
+<li><strong>Set log level before setup</strong> for complete logging coverage</li>
+<li><strong>Never call setup concurrently</strong> - it&rsquo;s not supported and will throw errors</li>
+<li><strong>Use Task/async context</strong> for setup in synchronous app lifecycle methods</li>
+</ol>
+<h3 id='security-recommendations' class='heading'>Security Recommendations</h3>
+
+<ol>
+<li><strong>Always use <code>.strict</code> mode in production</strong></li>
+<li><strong>Rotate pins before expiration</strong></li>
+<li><strong>Monitor pin validation failures</strong></li>
+<li><strong>Use HTTPS for all pinned domains</strong></li>
+<li><strong>Keep public keys secure and version-controlled</strong></li>
+</ol>
+<h3 id='performance-optimization' class='heading'>Performance Optimization</h3>
+
+<ol>
+<li><strong>Cache TrustPin configuration</strong> (handled automatically)</li>
+<li><strong>Reuse URLSession instances</strong> with TrustPin delegate</li>
+<li><strong>Use appropriate log levels</strong> (<code>.error</code> or <code>.none</code> in production)</li>
+<li><strong>Initialize early</strong> to avoid setup delays during first network requests</li>
+</ol>
+<h3 id='development-workflow' class='heading'>Development Workflow</h3>
+
+<ol>
+<li><strong>Start with <code>.permissive</code> mode</strong> during development</li>
+<li><strong>Test all endpoints</strong> with pinning enabled</li>
+<li><strong>Validate pin configurations</strong> in staging</li>
+<li><strong>Switch to <code>.strict</code> mode</strong> for production releases</li>
+<li><strong>Use debug logging</strong> to troubleshoot pinning issues</li>
+</ol>
+
+<hr>
+<h2 id='advanced-configuration' class='heading'>🔧 Advanced Configuration</h2>
+<h3 id='custom-urlsession-configuration' class='heading'>Custom URLSession Configuration</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">trustPinDelegate</span> <span class="o">=</span> <span class="kt">TrustPinURLSessionDelegate</span><span class="p">()</span>
+
+<span class="k">let</span> <span class="nv">configuration</span> <span class="o">=</span> <span class="kt">URLSessionConfiguration</span><span class="o">.</span><span class="k">default</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">timeoutIntervalForRequest</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">timeoutIntervalForResource</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">configuration</span><span class="o">.</span><span class="n">httpMaximumConnectionsPerHost</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="p">(</span>
+    <span class="nv">configuration</span><span class="p">:</span> <span class="n">configuration</span><span class="p">,</span>
+    <span class="nv">delegate</span><span class="p">:</span> <span class="n">trustPinDelegate</span><span class="p">,</span>
+    <span class="nv">delegateQueue</span><span class="p">:</span> <span class="kt">OperationQueue</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre>
+<h3 id='error-recovery-strategies' class='heading'>Error Recovery Strategies</h3>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">performNetworkRequest</span><span class="p">()</span> <span class="k">async</span> <span class="o">-&gt;</span> <span class="kt">Data</span><span class="p">?</span> <span class="p">{</span>
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">try</span> <span class="k">await</span> <span class="nf">secureNetworkRequest</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">domainNotRegistered</span> <span class="p">{</span>
+        <span class="c1">// Log security event but continue in permissive mode</span>
+        <span class="n">logger</span><span class="o">.</span><span class="nf">warning</span><span class="p">(</span><span class="s">"Unregistered domain accessed"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">try</span> <span class="k">await</span> <span class="nf">fallbackNetworkRequest</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">pinsMismatch</span> <span class="p">{</span>
+        <span class="c1">// This is a serious security issue - do not retry</span>
+        <span class="n">logger</span><span class="o">.</span><span class="nf">critical</span><span class="p">(</span><span class="s">"Certificate pinning failed - possible MITM attack"</span><span class="p">)</span>
+        <span class="k">throw</span> <span class="kt">SecurityError</span><span class="o">.</span><span class="n">potentialMITMAttack</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<hr>
+<h2 id='api-reference' class='heading'>📚 API Reference</h2>
+<h3 id='core-classes' class='heading'>Core Classes</h3>
+
+<ul>
+<li><strong><code><a href="Classes/TrustPin.html">TrustPin</a></code></strong> - Main SDK interface for setup and verification</li>
+<li><strong><code><a href="Enums/TrustPinMode.html">TrustPinMode</a></code></strong> - Enum defining pinning behavior modes</li>
+<li><strong><code><a href="Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a></code></strong> - URLSession delegate for automatic validation</li>
+<li><strong><code><a href="Enums/TrustPinErrors.html">TrustPinErrors</a></code></strong> - Error types for detailed error handling</li>
+<li><strong><code><a href="Enums/TrustPinLogLevel.html">TrustPinLogLevel</a></code></strong> - Logging configuration options</li>
+</ul>
+<h3 id='key-methods' class='heading'>Key Methods</h3>
+<pre class="highlight swift"><code><span class="c1">// Setup and configuration</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">organizationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">projectId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt">TrustPinMode</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span>
+
+<span class="c1">// Manual verification  </span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span>
+
+<span class="c1">// Logging configuration</span>
+<span class="kd">static</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="kt">TrustPinLogLevel</span><span class="p">)</span>
+</code></pre>
+
+<hr>
+<h2 id='testing' class='heading'>🧪 Testing</h2>
+<h3 id='unit-testing-with-trustpin' class='heading'>Unit Testing with TrustPin</h3>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">XCTest</span>
+<span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="kd">class</span> <span class="kt">NetworkTests</span><span class="p">:</span> <span class="kt">XCTestCase</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">setUp</span><span class="p">()</span> <span class="k">async</span> <span class="k">throws</span> <span class="p">{</span>
+        <span class="c1">// Use permissive mode for testing</span>
+        <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+            <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"test-org"</span><span class="p">,</span>
+            <span class="nv">projectId</span><span class="p">:</span> <span class="s">"test-project"</span><span class="p">,</span> 
+            <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"test-key"</span><span class="p">,</span>
+            <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">testSecureNetworkRequest</span><span class="p">()</span> <span class="k">async</span> <span class="k">throws</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">networkClient</span> <span class="o">=</span> <span class="kt">SecureNetworkClient</span><span class="p">()</span>
+        <span class="k">let</span> <span class="nv">data</span> <span class="o">=</span> <span class="k">try</span> <span class="k">await</span> <span class="n">networkClient</span><span class="o">.</span><span class="nf">fetchData</span><span class="p">()</span>
+        <span class="kt">XCTAssertNotNil</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<hr>
+<h2 id='troubleshooting' class='heading'>🐛 Troubleshooting</h2>
+<h3 id='common-issues' class='heading'>Common Issues</h3>
+<h4 id='strong-setup-fails-with-code-invalidprojectconfig-code-strong' class='heading'><strong>Setup Fails with <code>invalidProjectConfig</code></strong></h4>
+
+<ul>
+<li>✅ Verify organization ID, project ID, and public key are correct</li>
+<li>✅ Check for extra whitespace or newlines in credentials</li>
+<li>✅ Ensure public key is properly base64-encoded</li>
+<li>✅ <strong>Avoid concurrent setup calls</strong> - only call <code>TrustPin.setup()</code> once per app lifecycle</li>
+<li>✅ <strong>Check for multiple setup attempts</strong> - if already initialized, subsequent calls return immediately</li>
+</ul>
+<h4 id='strong-certificate-verification-fails-strong' class='heading'><strong>Certificate Verification Fails</strong></h4>
+
+<ul>
+<li>✅ Confirm domain is registered in TrustPin dashboard</li>
+<li>✅ Check certificate format (must be PEM-encoded)</li>
+<li>✅ Verify pins haven&rsquo;t expired</li>
+<li>✅ Test with <code>.permissive</code> mode first</li>
+</ul>
+<h4 id='strong-network-requests-hang-strong' class='heading'><strong>Network Requests Hang</strong></h4>
+
+<ul>
+<li>✅ Ensure you&rsquo;re using the correct URLSession delegate</li>
+<li>✅ Check for retain cycles with URLSession</li>
+<li>✅ Verify network connectivity</li>
+</ul>
+<h3 id='debug-steps' class='heading'>Debug Steps</h3>
+
+<ol>
+<li><strong>Enable debug logging</strong>: <code>await TrustPin.set(logLevel: .debug)</code></li>
+<li><strong>Test with permissive mode</strong> first</li>
+<li><strong>Verify credentials</strong> in TrustPin dashboard</li>
+<li><strong>Check certificate expiration</strong> dates</li>
+</ol>
+
+<hr>
+<h2 id='development-amp-contributing' class='heading'>🛠 Development &amp; Contributing</h2>
+
+<p>This section covers how to set up the development environment and contribute to TrustPin iOS SDK.</p>
+<h3 id='prerequisites' class='heading'>Prerequisites</h3>
+
+<ul>
+<li><strong>Xcode 16.2+</strong> with Command Line Tools</li>
+<li><strong>Swift 5.9+</strong></li>
+<li><strong>Ruby 3.2+</strong></li>
+<li><strong>Tuist 4.50.2+</strong> (for project generation)</li>
+<li><strong>Bundler</strong> (for Ruby dependencies)</li>
+</ul>
+<h3 id='development-setup' class='heading'>Development Setup</h3>
+
+<ol>
+<li><p><strong>Clone the repository:</strong></p>
+<pre class="highlight shell"><code>git clone https://github.com/trustpin-cloud/TrustPin-Swift.git
+<span class="nb">cd </span>TrustPin-Swift
+</code></pre></li>
+<li><p><strong>Install dependencies:</strong></p>
+<pre class="highlight shell"><code><span class="c"># Install Ruby dependencies</span>
+bundle <span class="nb">install</span>
+</code></pre></li>
+</ol>
+
+<p># Install Tuist
+   brew tap tuist/tuist
+   brew install &ndash;formula <a href="mailto:tuist@4.50.2">tuist@4.50.2</a></p>
+<pre class="highlight plaintext"><code>
+3. **Generate Xcode project:**
+   ```bash
+   tuist generate
+</code></pre>
+
+<ol>
+<li><strong>Open the project:</strong>
+<code>bash
+open TrustPin-Swift.xcworkspace
+</code></li>
+</ol>
+<h3 id='contributing-guidelines' class='heading'>Contributing Guidelines</h3>
+<h4 id='code-style' class='heading'>Code Style</h4>
+
+<ul>
+<li>Follow Swift API Design Guidelines</li>
+<li>Use meaningful variable and function names</li>
+<li>Add comprehensive documentation comments</li>
+<li>Maintain compatibility with supported platforms</li>
+</ul>
+<h4 id='testing-requirements' class='heading'>Testing Requirements</h4>
+
+<ul>
+<li><strong>Unit tests required</strong> for all new features</li>
+<li><strong>Integration tests</strong> for networking components</li>
+<li><strong>Minimum 80% code coverage</strong> for new code</li>
+<li><strong>All tests must pass</strong> before merging</li>
+</ul>
+<h4 id='pull-request-process' class='heading'>Pull Request Process</h4>
+
+<ol>
+<li><strong>Fork the repository</strong></li>
+<li><strong>Create a feature branch:</strong> <code>git checkout -b feature/amazing-feature</code></li>
+<li><strong>Make your changes</strong> with tests</li>
+<li><strong>Run the test suite:</strong> Ensure all tests pass</li>
+<li><strong>Commit changes:</strong> Use conventional commit messages</li>
+<li><strong>Push to your fork:</strong> <code>git push origin feature/amazing-feature</code></li>
+<li><strong>Create Pull Request</strong> with detailed description</li>
+</ol>
+<h4 id='commit-message-format' class='heading'>Commit Message Format</h4>
+<pre class="highlight plaintext"><code>type(scope): description
+
+[optional body]
+
+[optional footer]
+</code></pre>
+
+<p>Examples:</p>
+
+<ul>
+<li><code>feat(networking): add certificate validation caching</code></li>
+<li><code>fix(setup): resolve concurrent setup call issue</code></li>
+<li><code>docs(readme): update installation instructions</code></li>
+<li><code>test(validation): add edge case tests for domain parsing</code></li>
+</ul>
+<h3 id='development-tools' class='heading'>Development Tools</h3>
+<h4 id='tuist-commands' class='heading'>Tuist Commands</h4>
+<pre class="highlight shell"><code><span class="c"># Generate Xcode project</span>
+tuist generate
+
+<span class="c"># Clean derived data and caches</span>
+tuist clean
+
+<span class="c"># Edit project configuration</span>
+tuist edit
+</code></pre>
+<h3 id='debugging-tips' class='heading'>Debugging Tips</h3>
+
+<ol>
+<li><p><strong>Enable debug logging:</strong></p>
+<pre class="highlight swift"><code><span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="o">.</span><span class="n">debug</span><span class="p">)</span>
+</code></pre></li>
+<li><p><strong>Test in permissive mode</strong> during development:</p>
+<pre class="highlight swift"><code><span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span><span class="cm">/* ... */</span><span class="p">,</span> <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span><span class="p">)</span>
+</code></pre></li>
+<li><p><strong>Use test certificates</strong> in TestApp for validation</p></li>
+<li><p><strong>Check coverage reports</strong> for test completeness</p></li>
+</ol>
+
+<hr>
+<h2 id='documentation' class='heading'>📖 Documentation</h2>
+
+<ul>
+<li><strong>API Documentation</strong>: <a href="https://trustpin-cloud.github.io/TrustPin-Swift/">TrustPin iOS SDK Docs</a></li>
+<li><strong>Dashboard</strong>: <a href="https://app.trustpin.cloud">TrustPin Cloud Console</a></li>
+<li><strong>Support</strong>: <a href="https://trustpin.cloud/">Contact TrustPin</a></li>
+</ul>
+
+<hr>
+<h2 id='license' class='heading'>📝 License</h2>
+
+<p>This project is licensed under the GNU Affero General Public License v3.0 (AGPL v3) - see the <a href="LICENSE">LICENSE</a> file for details.</p>
+
+<p><strong>Commercial License</strong>: For commercial use without AGPL restrictions, contact <a href="mailto:licensing@trustpin.cloud">licensing@trustpin.cloud</a></p>
+
+<p><strong>Attribution Required</strong>: When using this software, you must display &ldquo;Powered by TrustPin.cloud&rdquo; in your application.</p>
+
+<hr>
+<h2 id='support-amp-feedback' class='heading'>🤝 Support &amp; Feedback</h2>
+
+<p>We welcome your feedback and questions!</p>
+
+<ul>
+<li>📧 <strong>Email</strong>: <a href="mailto:support@trustpin.cloud">support@trustpin.cloud</a></li>
+<li>🌐 <strong>Website</strong>: <a href="https://trustpin.cloud">https://trustpin.cloud</a></li>
+<li>📋 <strong>Issues</strong>: <a href="https://github.com/trustpin-cloud/TrustPin-Swift/issues">GitHub Issues</a></li>
+</ul>
+
+<hr>
+
+<p><em>Built with ❤️ by the TrustPin team</em></p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2025 <a class="link" href="https://trustpin.cloud" target="_blank" rel="external noopener">TrustPin</a>. All rights reserved. (Last updated: 2025-07-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>

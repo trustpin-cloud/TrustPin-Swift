@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TrustPin Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/TrustPin" class="dashAnchor"></a>
+
+    <a title="TrustPin Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          TrustPinKit 0.0.1 Docs
+        </a>
+         (100% documented)
+      </p>
+    
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/trustpin-cloud/TrustPin-Swift">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
+          </a>
+        </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="dash-feed://https%3A%2F%2Ftrustpin-cloud.github.io%2FTrustPin-Swift%2Fdocsets%2FTrustPinKit.xml">
+            <img class="header-icon" src="../img/dash.png" alt="Dash"/>
+            Install in Dash
+          </a>
+        </p>
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">TrustPinKit</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      <a class="breadcrumb" href="../Classes.html">Classes</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      TrustPin Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrustPin.html">TrustPin</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/TrustPinURLSessionDelegate.html">TrustPinURLSessionDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinErrors.html">TrustPinErrors</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinLogLevel.html">TrustPinLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Enums/TrustPinMode.html">TrustPinMode</a>
+              </li>
+            </ul>
+          </li>
+        <li><a href="coverage/index.html" style="color: #007bff; font-weight: bold;">📊 Coverage</a></li></ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>TrustPin</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="kt">TrustPin</span></code></pre>
+
+                </div>
+              </div>
+            <p>A namespace for TrustPin core functionality.</p>
+
+<p>TrustPin provides SSL certificate pinning functionality to prevent man-in-the-middle (MITM) attacks
+by validating server certificates against pre-configured public key pins. The library supports
+both strict and permissive validation modes to accommodate different security requirements.</p>
+<h2 id='overview' class='heading'>Overview</h2>
+
+<p>TrustPin delivers pinning configurations to your application. All operations are designed to work with Swift&rsquo;s
+modern concurrency model using <code>async</code>/<code>await</code>.</p>
+<h2 id='basic-usage' class='heading'>Basic Usage</h2>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">TrustPinKit</span>
+
+<span class="c1">// Initialize TrustPin with your project credentials</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"your-org-id"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"your-project-id"</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"your-base64-public-key"</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span>
+<span class="p">)</span>
+
+<span class="c1">// Verify a certificate manually</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span>
+    <span class="nv">domain</span><span class="p">:</span> <span class="s">"api.example.com"</span><span class="p">,</span>
+    <span class="nv">certificate</span><span class="p">:</span> <span class="n">pemCertificate</span>
+<span class="p">)</span>
+</code></pre>
+<h2 id='integration-with-urlsession' class='heading'>Integration with URLSession</h2>
+
+<p>For automatic certificate validation with URLSession:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">trustPinDelegate</span> <span class="o">=</span> <span class="kt">TrustPinURLSessionDelegate</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">session</span> <span class="o">=</span> <span class="kt">URLSession</span><span class="p">(</span>
+    <span class="nv">configuration</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
+    <span class="nv">delegate</span><span class="p">:</span> <span class="n">trustPinDelegate</span><span class="p">,</span>
+    <span class="nv">delegateQueue</span><span class="p">:</span> <span class="kc">nil</span>
+<span class="p">)</span>
+</code></pre>
+<h2 id='pinning-modes' class='heading'>Pinning Modes</h2>
+
+<ul>
+<li><code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO6strictyA2CmF">strict</a></code>: Throws errors for unregistered domains (recommended for production)</li>
+<li><code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO10permissiveyA2CmF">permissive</a></code>: Allows unregistered domains to bypass pinning (development/testing)</li>
+</ul>
+<h2 id='error-handling' class='heading'>Error Handling</h2>
+
+<p>TrustPin provides detailed error information through <code><a href="../Enums/TrustPinErrors.html">TrustPinErrors</a></code> for proper
+error handling and security monitoring.</p>
+<h2 id='thread-safety' class='heading'>Thread Safety</h2>
+
+<p>All TrustPin operations are thread-safe and can be called from any queue.
+Internal operations are performed on appropriate background queues.</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    Always call <code>setup(organizationId:projectId:publicKey:mode:)</code> before performing certificate verification.
+
+</div><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    Use <code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO6strictyA2CmF">strict</a></code> mode in production environments for maximum security.
+
+</div>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKey4modeySS_S2SAA0aB4ModeOtYaKFZ"></a>
+                    <a name="//apple_ref/swift/Method/setup(organizationId:projectId:publicKey:mode:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKey4modeySS_S2SAA0aB4ModeOtYaKFZ">setup(organizationId:<wbr>projectId:<wbr>publicKey:<wbr>mode:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes the TrustPin core library with the specified configuration.</p>
+
+<p>This method configures TrustPin with your organization credentials and fetches
+the pinning configuration from the TrustPin service. The configuration is cached
+for 10 minutes to optimize performance and reduce network requests.</p>
+<h2 id='example-usage' class='heading'>Example Usage</h2>
+<pre class="highlight swift"><code><span class="c1">// Production setup with strict mode</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"prod-org-123"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"mobile-app-v2"</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"LS0tLS1CRUdJTi..."</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">strict</span>
+<span class="p">)</span>
+
+<span class="c1">// Development setup with permissive mode</span>
+<span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">setup</span><span class="p">(</span>
+    <span class="nv">organizationId</span><span class="p">:</span> <span class="s">"dev-org-456"</span><span class="p">,</span>
+    <span class="nv">projectId</span><span class="p">:</span> <span class="s">"mobile-app-staging"</span><span class="p">,</span>
+    <span class="nv">publicKey</span><span class="p">:</span> <span class="s">"LS0tLS1CRUdJTk..."</span><span class="p">,</span>
+    <span class="nv">mode</span><span class="p">:</span> <span class="o">.</span><span class="n">permissive</span>
+<span class="p">)</span>
+</code></pre>
+<h2 id='setup-behavior' class='heading'>Setup Behavior</h2>
+
+<ul>
+<li><strong>Expected usage</strong>: Call this method only once during your app&rsquo;s lifecycle</li>
+<li><strong>Concurrent calls</strong>: Not supported - ensure single-threaded setup</li>
+<li><strong>Simplicity</strong>: No complex state checking - trusts proper usage</li>
+</ul>
+<h2 id='security-considerations' class='heading'>Security Considerations</h2>
+
+<ul>
+<li><strong>Production</strong>: Always use <code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO6strictyA2CmF">strict</a></code> mode to ensure all connections are validated</li>
+<li><strong>Development</strong>: Use <code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO10permissiveyA2CmF">permissive</a></code> mode to allow connections to unregistered domains</li>
+<li><strong>Credentials</strong>: Keep your public key secure and never commit it to version control in plain text</li>
+</ul>
+<h2 id='network-requirements' class='heading'>Network Requirements</h2>
+
+<p>This method requires network access to fetch the pinning configuration from
+<code>https://cdn.trustpin.cloud</code>. Ensure your app has appropriate network permissions
+and can reach this endpoint.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO20invalidProjectConfigyA2CmF">invalidProjectConfig</a></code> if credentials are invalid or empty</p>
+
+</div><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO24errorFetchingPinningInfoyA2CmF">errorFetchingPinningInfo</a></code> if network request fails</p>
+
+</div><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO29configurationValidationFailedyA2CmF">configurationValidationFailed</a></code> if signature verification fails</p>
+
+</div><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    <p>This method must be called before any certificate verification operations.</p>
+
+</div><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    <p>Only call this method once during your app&rsquo;s lifecycle.</p>
+
+</div><div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>Configuration is automatically cached for 10 minutes to improve performance.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">organizationId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                         <span class="nv">projectId</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                         <span class="nv">publicKey</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+                         <span class="nv">mode</span><span class="p">:</span> <span class="kt"><a href="../Enums/TrustPinMode.html">TrustPinMode</a></span> <span class="o">=</span> <span class="o">.</span><span class="n">strict</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>organizationId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Your organization identifier from the TrustPin dashboard</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>projectId</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Your project identifier from the TrustPin dashboard</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>publicKey</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Base64-encoded public key for signature verification</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mode</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The pinning mode controlling behavior for unregistered domains (default: <code>.strict</code>)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB0C6verify6domain11certificateySS_SStYaKFZ"></a>
+                    <a name="//apple_ref/swift/Method/verify(domain:certificate:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB0C6verify6domain11certificateySS_SStYaKFZ">verify(domain:<wbr>certificate:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Verifies a certificate against the specified domain using public key pinning.</p>
+
+<p>This method performs certificate validation by comparing the certificate&rsquo;s public key
+against the configured pins for the specified domain. It supports both SHA-256 and
+SHA-512 hash algorithms for pin matching.</p>
+<h2 id='example-usage' class='heading'>Example Usage</h2>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">pemCertificate</span> <span class="o">=</span> <span class="s">"""
+-----BEGIN CERTIFICATE-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA...
+-----END CERTIFICATE-----
+"""</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">verify</span><span class="p">(</span>
+        <span class="nv">domain</span><span class="p">:</span> <span class="s">"api.example.com"</span><span class="p">,</span>
+        <span class="nv">certificate</span><span class="p">:</span> <span class="n">pemCertificate</span>
+    <span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Certificate is valid!"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">domainNotRegistered</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Domain not configured for pinning"</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="kt">TrustPinErrors</span><span class="o">.</span><span class="n">pinsMismatch</span> <span class="p">{</span>
+    <span class="nf">print</span><span class="p">(</span><span class="s">"Certificate doesn't match configured pins"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='security-behavior' class='heading'>Security Behavior</h2>
+
+<ul>
+<li><strong>Registered domains</strong>: Certificate validation is performed against configured pins</li>
+<li><strong>Unregistered domains</strong>: Behavior depends on the configured <code><a href="../Enums/TrustPinMode.html">TrustPinMode</a></code>:
+
+<ul>
+<li><code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO6strictyA2CmF">strict</a></code>: Throws <code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO19domainNotRegisteredyA2CmF">domainNotRegistered</a></code></li>
+<li><code><a href="../Enums/TrustPinMode.html#/s:11TrustPinKit0aB4ModeO10permissiveyA2CmF">permissive</a></code>: Allows connection to proceed with info log</li>
+</ul></li>
+</ul>
+<h2 id='certificate-format' class='heading'>Certificate Format</h2>
+
+<p>The certificate must be in PEM format, including the BEGIN and END markers.
+Both single and multiple certificate chains are supported.</p>
+<div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO19domainNotRegisteredyA2CmF">domainNotRegistered</a></code> if domain is not configured (strict mode only)</p>
+
+</div><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO12pinsMismatchyA2CmF">pinsMismatch</a></code> if certificate doesn&rsquo;t match any configured pins</p>
+
+</div><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO14allPinsExpiredyA2CmF">allPinsExpired</a></code> if all pins for the domain have expired</p>
+
+</div><div class="aside aside-throws">
+    <p class="aside-title">Throws</p>
+    <p><code><a href="../Enums/TrustPinErrors.html#/s:11TrustPinKit0aB6ErrorsO17invalidServerCertyA2CmF">invalidServerCert</a></code> if certificate format is invalid</p>
+
+</div><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    <p>Call <code><a href="../Classes/TrustPin.html#/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKey4modeySS_S2SAA0aB4ModeOtYaKFZ">setup(organizationId:projectId:publicKey:mode:)</a></code> before using this method.</p>
+
+</div><div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>This method is thread-safe and can be called from any queue.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">verify</span><span class="p">(</span><span class="nv">domain</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">certificate</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">async</span> <span class="k">throws</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>domain</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The domain name to validate (e.g., &ldquo;api.example.com&rdquo;)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>certificate</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>PEM-encoded certificate string with BEGIN/END markers</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11TrustPinKit0aB0C3set8logLevelyAA0ab3LogF0O_tYaFZ"></a>
+                    <a name="//apple_ref/swift/Method/set(logLevel:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11TrustPinKit0aB0C3set8logLevelyAA0ab3LogF0O_tYaFZ">set(logLevel:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Asynchronous
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Sets the current log level for TrustPin&rsquo;s internal logging system.</p>
+
+<p>Logging helps with debugging certificate pinning issues and monitoring
+security events. Different log levels provide varying amounts of detail.</p>
+<h2 id='log-levels' class='heading'>Log Levels</h2>
+
+<ul>
+<li><code><a href="../Enums/TrustPinLogLevel.html#/s:11TrustPinKit0aB8LogLevelO4noneyA2CmF">none</a></code>: No logging output</li>
+<li><code><a href="../Enums/TrustPinLogLevel.html#/s:11TrustPinKit0aB8LogLevelO5erroryA2CmF">error</a></code>: Only error messages</li>
+<li><code><a href="../Enums/TrustPinLogLevel.html#/s:11TrustPinKit0aB8LogLevelO4infoyA2CmF">info</a></code>: Errors and informational messages</li>
+<li><code><a href="../Enums/TrustPinLogLevel.html#/s:11TrustPinKit0aB8LogLevelO5debugyA2CmF">debug</a></code>: All messages including detailed debug information</li>
+</ul>
+<h2 id='example-usage' class='heading'>Example Usage</h2>
+<pre class="highlight swift"><code><span class="c1">// Enable debug logging for development</span>
+<span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="o">.</span><span class="n">debug</span><span class="p">)</span>
+
+<span class="c1">// Minimal logging for production</span>
+<span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="o">.</span><span class="n">error</span><span class="p">)</span>
+
+<span class="c1">// Disable all logging</span>
+<span class="k">await</span> <span class="kt">TrustPin</span><span class="o">.</span><span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="o">.</span><span class="k">none</span><span class="p">)</span>
+</code></pre>
+<h2 id='performance-considerations' class='heading'>Performance Considerations</h2>
+
+<ul>
+<li><strong>Production</strong>: Use <code>.error</code> or <code>.none</code> to minimize performance impact</li>
+<li><strong>Development</strong>: Use <code>.debug</code> for detailed troubleshooting information</li>
+<li><p><strong>Staging</strong>: Use <code>.info</code> for balanced logging without excessive detail</p></li>
+</ul><div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    <p>This setting affects all TrustPin logging globally across your application.</p>
+
+</div><div class="aside aside-important">
+    <p class="aside-title">Important</p>
+    <p>Set the log level before calling <code><a href="../Classes/TrustPin.html#/s:11TrustPinKit0aB0C5setup14organizationId07projectF09publicKey4modeySS_S2SAA0aB4ModeOtYaKFZ">setup(organizationId:projectId:publicKey:mode:)</a></code> for complete logging coverage.</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="nv">logLevel</span><span class="p">:</span> <span class="kt"><a href="../Enums/TrustPinLogLevel.html">TrustPinLogLevel</a></span><span class="p">)</span> <span class="k">async</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>level</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Enums/TrustPinLogLevel.html">TrustPinLogLevel</a></code> to use for filtering log messages</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2025 <a class="link" href="https://trustpin.cloud" target="_blank" rel="external noopener">TrustPin</a>. All rights reserved. (Last updated: 2025-07-12)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
+  </body>
+</html>
